@@ -24,7 +24,7 @@ class MyApp extends App {
     return (
       <>
         <Head>
-        <title>{APP_NAME}</title>
+          <title>{APP_NAME}</title>
         </Head>
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
