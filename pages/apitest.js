@@ -10,7 +10,6 @@ const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=$
 
 const Example = ({ gourmet }) => {
   return <div>data: {JSON.stringify(gourmet)}</div>;
-  // return <div>url: {gourmetUrl}</div>;
 };
 
 // データ取得準備
