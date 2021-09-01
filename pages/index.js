@@ -8,9 +8,7 @@ const Index = () => (
   <Box sx={{ flexGrow: 1 }}>
     <CustomAppBar />
     <Container style={{ marginTop: '10px' }}>
-      <Typography variant="h3">
-        Example
-      </Typography>
+      <Typography variant="h3">Example</Typography>
       <ExampleLinks />
     </Container>
   </Box>
