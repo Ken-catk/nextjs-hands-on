@@ -8,6 +8,7 @@ const links = [
   { href: '/example5', title: 'カスタムコンポーネント' },
   { href: '/example6', title: 'onClickとuseState' },
   { href: '/example7', title: 'fetch' },
+  { href: '/example8', title: 'まとめ' },
 ];
 
 const ExampleLinks = () =>
