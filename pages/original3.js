@@ -50,7 +50,7 @@ const fetchGourmetApi = async props => {
   return result;
 };
 
-const fetchGenreApi = async username => {
+const fetchAllGenreApi = async username => {
   const uri = `https://webservice.recruit.co.jp/hotpepper/genre/v1/?key=${HOTPEPPER_API_KEY}&format=json`;
   const res = await fetch(uri);
   const result = await res.json();
@@ -63,9 +63,10 @@ const fetchGenreApi = async username => {
   return result;
 };
 
-const Example = ({ gourmetData, genreData }) => {
+const Example = ({ gourmetData, allGenreData }) => {
   // state用意
-  const [genre, setGenre] = React.useState(genreData ?? '');
+  const allGenre = allGenreData;
+  const [genre, setGenre] = React.useState('G001');
   const [gourmet, setGourmet] = React.useState(gourmetData ?? '');
   const classes = useStyles();
 
@@ -108,10 +109,11 @@ const Example = ({ gourmetData, genreData }) => {
                 id: 'filled-age-native-simple',
               }}
             >
-              <option aria-label="None" value="" />
-              <option value="G001">居酒屋</option>
-              <option value="G002">ダイニングバー</option>
-              <option value="G003">創作</option>
+              {allGenre.results.genre.map(data => (
+                <option key={data} value={data.code}>
+                  {data.name.toString()}
+                </option>
+              ))}
             </Select>
           </FormControl>
 
@@ -119,7 +121,7 @@ const Example = ({ gourmetData, genreData }) => {
             <CustomButton onClick={onClick}>更新</CustomButton>
           </Box>
 
-          <Box sx={{ padding: '10px' }}>genre: {JSON.stringify(genre)}</Box>
+          <Box sx={{ padding: '10px' }}>genre: {JSON.stringify(allGenre)}</Box>
           <Box sx={{ padding: '10px' }}>gourmet: {JSON.stringify(gourmet)}</Box>
         </Box>
 
@@ -136,11 +138,11 @@ const Example = ({ gourmetData, genreData }) => {
 // コンストラクタみたいなもの
 export async function getServerSideProps() {
   const resGourmet = await fetchGourmetApi();
-  const resGenre = await fetchGenreApi();
+  const resAllGenre = await fetchAllGenreApi();
   return {
     props: {
       gourmetData: resGourmet,
-      genreData: resGenre,
+      allGenreData: resAllGenre,
     },
   };
 }
