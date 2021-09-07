@@ -14,11 +14,9 @@ const Example = ({ gourmet }) => {
 // getServerSideProps
 export async function getServerSideProps() {
   const { publicRuntimeConfig } = getConfig();
-  const { HOST } = publicRuntimeConfig;
+  const { VERCEL_URL } = publicRuntimeConfig;
 
-  const res = await fetch(`${HOST}/api/gourmet`);
-  // const res = await fetch(`http://localhost:3000/api/gourmet`);
-
+  const res = await fetch(`${VERCEL_URL}/api/gourmet`);
   const data = await res.json();
 
   return {
