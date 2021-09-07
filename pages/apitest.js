@@ -13,7 +13,7 @@ const Example = ({ gourmet }) => {
 };
 
 // データ取得準備
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const res = await fetch(gourmetUrl);
   const data = await res.json();
 
