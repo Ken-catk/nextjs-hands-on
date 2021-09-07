@@ -13,6 +13,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import NativeSelect from '@material-ui/core/NativeSelect';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
 
 const { publicRuntimeConfig, serverRuntimeConfig } = getConfig();
 const { VERCEL_URL } = publicRuntimeConfig;
@@ -89,7 +92,7 @@ const Example = ({ gourmetData, allGenreData }) => {
   return (
     <Container>
       <div className={classes.root}>
-        <div className={classes.title}>Githubのプロフィールを取得するサンプル</div>
+        <div className={classes.title}>ジャンルで飲食店情報を取得するサンプル</div>
         <Box
           component="form"
           noValidate
@@ -121,8 +124,34 @@ const Example = ({ gourmetData, allGenreData }) => {
             <CustomButton onClick={onClick}>更新</CustomButton>
           </Box>
 
-          <Box sx={{ padding: '10px' }}>genre: {JSON.stringify(allGenre)}</Box>
-          <Box sx={{ padding: '10px' }}>gourmet: {JSON.stringify(gourmet)}</Box>
+          {/* <Box sx={{ padding: '10px' }}>genre: {JSON.stringify(allGenre)}</Box> */}
+          {/* <Box sx={{ padding: '10px' }}>gourmet: {JSON.stringify(gourmet)}</Box> */}
+
+          {gourmet.results.shop.map(data => (
+            <Box
+              key={data}
+              color="secondary"
+              bgcolor="text.disabled"
+              padding="10px"
+              margin="10px"
+              borderRadius="borderRadius"
+            >
+              <img src={data.logo_image} />
+              <Box component="div" display="inline">
+                {' '}
+                <CustomButton variant="contained" color="primary" href={data.urls.pc}>
+                  詳細
+                </CustomButton>
+              </Box>
+
+              <Box component="div" display="inline" fontSize={25}>
+                【 {data.name.toString()} 】
+              </Box>
+              <Box component="div" display="inline">
+                場所: {data.access.toString()}にある
+              </Box>
+            </Box>
+          ))}
         </Box>
 
         <div>
