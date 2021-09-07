@@ -11,8 +11,10 @@ const gourmetOriginal = async (req, res) => {
   const { serverRuntimeConfig } = getConfig();
   const { HOTPEPPER_API_KEY } = serverRuntimeConfig;
 
+  // 取得店舗数
+  const count = 50;
   // ジャンル検索
-  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&genre=${genre}&format=json`;
+  const gourmetUrl = `https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=${HOTPEPPER_API_KEY}&genre=${genre}&count=${count}&format=json`;
 
   const result = await fetch(gourmetUrl);
   const data = await result.json();
