@@ -8,7 +8,11 @@ const links = [
   { href: '/example5', title: 'カスタムコンポーネント' },
   { href: '/example6', title: 'onClickとuseState' },
   { href: '/example7', title: 'fetch' },
-  { href: '/example8', title: 'まとめ' },
+  { href: '/apitest', title: 'APIテスト' },
+  { href: '/example8', title: 'サーバーサイドでfetch' },
+  { href: '/original1', title: 'お店をリスト表示' },
+  { href: '/original2', title: 'ジャンルをfetch' },
+  { href: '/original3', title: 'ボタンで飲食店絞り込み' },
 ];
 
 const ExampleLinks = () =>
